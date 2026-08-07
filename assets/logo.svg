@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="beam" x1="1" y1="0" x2="0.25" y2="1">
+      <stop offset="0" stop-color="#fbbf24" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#fbbf24" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="badge"><rect width="32" height="32" rx="7"/></clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6.75" fill="#1b2531" stroke="#54687f" stroke-width="1.2"/>
+  <g clip-path="url(#badge)">
+    <polygon points="21,0 32,0 32,10 14.5,16.2" fill="url(#beam)"/>
+  </g>
+  <rect x="6" y="7.5" width="6" height="3.4" rx="1.7" fill="#57697f"/>
+  <rect x="14.5" y="7.5" width="8" height="3.4" rx="1.7" fill="#57697f"/>
+  <rect x="6" y="14.3" width="4.5" height="3.4" rx="1.7" fill="#57697f"/>
+  <rect x="12.5" y="13.6" width="10" height="4.8" rx="2.4" fill="#2dd4bf" opacity="0.3"/>
+  <rect x="13.5" y="14.3" width="8" height="3.4" rx="1.7" fill="#2dd4bf"/>
+  <rect x="6" y="21.1" width="9" height="3.4" rx="1.7" fill="#57697f"/>
+  <rect x="17.5" y="21.1" width="6.5" height="3.4" rx="1.7" fill="#57697f"/>
+</svg>
