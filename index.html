@@ -164,8 +164,11 @@
   /* ───────── evidence ───────── */
   .figure { margin-top: 36px; background: var(--panel); border: 1px solid var(--border);
     border-radius: 16px; padding: 18px; }
-  .figure img { width: 100%; border-radius: 8px; display: block; }
+  .figure img { width: 100%; height: auto; border-radius: 8px; display: block; }
   .figure figcaption { font-size: 12.5px; color: var(--ink3); padding: 12px 6px 2px; }
+  .figure a { display: block; }
+  .figure .tap { display: none; }
+  @media (max-width: 680px) { .figure .tap { display: inline; } }
 
   /* ───────── honesty strip ───────── */
   .honesty { background: var(--bg2); border-top: 1px solid var(--border);
@@ -428,10 +431,13 @@
     separated score distributions. The dashed line is the 1%-false-alarm threshold:
     every lie in the benchmark sits to its right.</p>
     <figure class="figure">
-      <img src="assets/m5_distributions.png" width="1200" height="675" alt="Histogram of deception-intent probe scores: benign traffic (green), honest scenario responses (blue), and lies (red) form three separated distributions, with the 1% false-positive-rate threshold between honest content and lies">
+      <a href="assets/m5_distributions.png" aria-label="Open the full-size distribution chart">
+        <img src="assets/m5_distributions.png" width="1200" height="675" alt="Histogram of deception-intent probe scores: benign traffic (green), honest scenario responses (blue), and lies (red) form three separated distributions, with the 1% false-positive-rate threshold between honest content and lies">
+      </a>
       <figcaption>Deception-intent scores across 508 rollouts (Qwen3-4B). Full
       methodology, transfer matrices, and the scale-bracket result (the same recipe
-      detects nothing at 1.7B) in the report.</figcaption>
+      detects nothing at 1.7B) in the report.<span class="tap"> Tap the chart to
+      view it full size.</span></figcaption>
     </figure>
   </section>
 </div>
