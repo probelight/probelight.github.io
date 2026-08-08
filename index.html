@@ -153,10 +153,13 @@
   /* ───────── honesty strip ───────── */
   .honesty { background: var(--bg2); border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border); }
-  .limits { margin-top: 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  .limits { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 14px; }
-  .limit { display: flex; gap: 12px; font-size: 14px; color: var(--ink2); }
-  .limit .mark { color: var(--orange); font-weight: 700; }
+  @media (max-width: 620px) { .limits { grid-template-columns: 1fr; } }
+  .limit { background: var(--panel); border: 1px solid var(--border);
+    border-left: 3px solid var(--orange); border-radius: 12px;
+    padding: 18px 18px 16px; font-size: 13.5px; color: var(--ink2); }
+  .limit b { display: block; color: var(--ink); font-size: 14.5px; margin-bottom: 6px; }
 
   /* ───────── footer ───────── */
   footer { padding: 56px 0 48px; }
@@ -262,10 +265,10 @@
           <rect x="84" y="92" width="192" height="12" rx="6" fill="#212c3b"/>
           <rect x="84" y="114" width="192" height="12" rx="6" fill="#212c3b"/>
           <rect x="84" y="136" width="192" height="12" rx="6" fill="#0f766e"/>
-          <text x="288" y="146" fill="#2dd4bf" font-size="11" text-anchor="start">  L16 · truth</text>
+          <text x="316" y="130" fill="#2dd4bf" font-size="11" text-anchor="start">L16</text>
           <rect x="84" y="158" width="192" height="12" rx="6" fill="#212c3b"/>
           <rect x="84" y="180" width="192" height="12" rx="6" fill="#5b21b6"/>
-          <text x="288" y="190" fill="#a78bfa" font-size="11" text-anchor="start">  L20 · intent</text>
+          <text x="316" y="207" fill="#a78bfa" font-size="11" text-anchor="start">L20</text>
           <rect x="84" y="202" width="192" height="12" rx="6" fill="#212c3b"/>
           <rect x="84" y="224" width="192" height="12" rx="6" fill="#212c3b"/>
         </g>
@@ -274,11 +277,13 @@
         <text x="10" y="140" fill="#5d6b7d" font-size="12">prompt</text>
         <line x1="8" y1="150" x2="56" y2="150" stroke="#3d4f63" stroke-width="2" class="flowdash"/>
 
-        <!-- probe reads -->
-        <line x1="370" y1="142" x2="470" y2="112" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
-        <line x1="370" y1="186" x2="470" y2="196" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
-        <circle cx="370" cy="142" r="5" fill="#2dd4bf" class="pulse"/>
-        <circle cx="370" cy="186" r="5" fill="#a78bfa" class="pulse"/>
+        <!-- probe reads: dots sit on the block edge, lines land on the card edges -->
+        <circle cx="300" cy="142" r="5" fill="#2dd4bf" class="pulse"/>
+        <circle cx="300" cy="186" r="5" fill="#a78bfa" class="pulse"/>
+        <line x1="308" y1="140" x2="472" y2="114" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
+        <line x1="308" y1="188" x2="472" y2="196" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <polygon points="472,114 462,111 463,120" fill="#2dd4bf"/>
+        <polygon points="472,196 462,192 462,201" fill="#a78bfa"/>
 
         <!-- probes -->
         <rect x="474" y="86" width="150" height="52" rx="10" fill="#10151c" stroke="#0f766e"/>
@@ -289,8 +294,10 @@
         <text x="549" y="210" fill="#5d6b7d" font-size="11" text-anchor="middle">"is it lying on purpose?"</text>
 
         <!-- scores out -->
-        <line x1="628" y1="112" x2="716" y2="140" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
-        <line x1="628" y1="196" x2="716" y2="168" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <line x1="626" y1="112" x2="714" y2="138" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
+        <line x1="626" y1="196" x2="714" y2="170" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <polygon points="718,139 708,140 711,131" fill="#2dd4bf"/>
+        <polygon points="718,169 708,168 711,177" fill="#a78bfa"/>
 
         <!-- UI block -->
         <rect x="720" y="106" width="164" height="96" rx="12" fill="#0d131b" stroke="#2a3648"/>
@@ -304,8 +311,9 @@
         <rect x="736" y="172" width="80" height="10" rx="5" fill="#212c3b"/>
 
         <!-- steering back -->
-        <path d="M 800 224 Q 800 268 549 268 Q 300 268 240 258" fill="none"
+        <path d="M 802 206 Q 802 262 549 262 Q 310 262 254 254" fill="none"
               stroke="#fbbf24" stroke-width="2" class="flowdash" opacity="0.7"/>
+        <polygon points="248,252 259,249 258,259" fill="#fbbf24" opacity="0.85"/>
         <text x="548" y="288" fill="#fbbf24" font-size="12" text-anchor="middle">honesty steering — writes the intent direction back into the stream (causal)</text>
       </svg>
 
@@ -324,11 +332,15 @@
         <rect x="95" y="188" width="150" height="11" rx="5.5" fill="#212c3b"/>
         <text x="16" y="118" fill="#5d6b7d" font-size="10">prompt</text>
         <line x1="22" y1="128" x2="72" y2="128" stroke="#3d4f63" stroke-width="2" class="flowdash"/>
-        <!-- reads -->
-        <circle cx="140" cy="105" r="4.5" fill="#2dd4bf" class="pulse"/>
-        <circle cx="140" cy="149" r="4.5" fill="#a78bfa" class="pulse"/>
-        <line x1="128" y1="112" x2="102" y2="250" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
-        <line x1="160" y1="156" x2="272" y2="250" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <!-- reads: dots mark the probed layers; lines exit the block's bottom edge -->
+        <circle cx="170" cy="105" r="4.5" fill="#2dd4bf" class="pulse"/>
+        <circle cx="170" cy="149" r="4.5" fill="#a78bfa" class="pulse"/>
+        <circle cx="115" cy="218" r="3.5" fill="#2dd4bf"/>
+        <circle cx="265" cy="218" r="3.5" fill="#a78bfa"/>
+        <line x1="113" y1="224" x2="103" y2="248" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
+        <line x1="267" y1="224" x2="276" y2="248" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <polygon points="102,252 98,243 108,244" fill="#2dd4bf"/>
+        <polygon points="277,252 272,244 282,243" fill="#a78bfa"/>
         <!-- probes -->
         <rect x="20" y="254" width="165" height="58" rx="10" fill="#10151c" stroke="#0f766e"/>
         <text x="102" y="278" fill="#2dd4bf" font-size="12.5" text-anchor="middle" font-weight="650">truth probe</text>
@@ -337,8 +349,10 @@
         <text x="277" y="278" fill="#a78bfa" font-size="12.5" text-anchor="middle" font-weight="650">intent probe</text>
         <text x="277" y="296" fill="#5d6b7d" font-size="9.5" text-anchor="middle">"is it lying on purpose?"</text>
         <!-- scores down -->
-        <line x1="102" y1="316" x2="152" y2="360" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
-        <line x1="277" y1="316" x2="228" y2="360" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <line x1="102" y1="316" x2="150" y2="358" stroke="#2dd4bf" stroke-width="2" class="flowdash"/>
+        <line x1="277" y1="316" x2="230" y2="358" stroke="#a78bfa" stroke-width="2" class="flowdash"/>
+        <polygon points="153,362 143,360 149,352" fill="#2dd4bf"/>
+        <polygon points="227,362 231,352 237,360" fill="#a78bfa"/>
         <!-- UI -->
         <text x="190" y="356" fill="#98a6b8" font-size="12.5" text-anchor="middle" font-weight="600"> </text>
         <rect x="95" y="364" width="190" height="100" rx="12" fill="#0d131b" stroke="#2a3648"/>
@@ -351,8 +365,9 @@
         <rect x="171" y="428" width="54" height="3" rx="1.5" fill="#a78bfa"/>
         <rect x="113" y="440" width="80" height="10" rx="5" fill="#212c3b"/>
         <!-- steering back up -->
-        <path d="M 285 440 Q 358 430 358 240 Q 358 110 310 108" fill="none"
+        <path d="M 285 430 Q 356 420 356 250 Q 356 130 312 126" fill="none"
               stroke="#fbbf24" stroke-width="2" class="flowdash" opacity="0.7"/>
+        <polygon points="306,126 315,120 316,131" fill="#fbbf24" opacity="0.85"/>
         <text x="190" y="502" fill="#fbbf24" font-size="10.5" text-anchor="middle">honesty steering — writes the intent</text>
         <text x="190" y="518" fill="#fbbf24" font-size="10.5" text-anchor="middle">direction back into the stream (causal)</text>
       </svg>
@@ -412,17 +427,18 @@
       <p class="sub">ProbeLight's credibility strategy is publishing its failure modes
       with the same prominence as its wins. The current probe:</p>
       <div class="limits">
-        <div class="limit"><span class="mark">→</span><span>False-alarms on 50% of honest
-          discussions <i>about</i> deception (31% max-pooled) — it partially reads
-          deceptive <i>context</i>, not only deceptive <i>choice</i></span></div>
-        <div class="limit"><span class="mark">→</span><span>Reads <i>belief</i>, not fact —
-          a confidently mistaken model produces no deception signal</span></div>
-        <div class="limit"><span class="mark">→</span><span>Not adversarially robust —
-          activation monitors can be trained against; never use one as a security
-          boundary</span></div>
-        <div class="limit"><span class="mark">→</span><span>Small n, one model family so
-          far — every number is stated with its sample size and needs replication
-          at scale</span></div>
+        <div class="limit"><b>Context, not only choice</b>False-alarms on 50% of
+          honest discussions <i>about</i> deception (31% max-pooled) — it partially
+          reads deceptive <i>context</i>, not only the deceptive <i>act</i>.</div>
+        <div class="limit"><b>Belief, not fact</b>A confidently mistaken model
+          produces no deception signal. This is a belief monitor, never a
+          fact-checker.</div>
+        <div class="limit"><b>Not adversarially robust</b>Activation monitors can
+          be trained against. Never use one as a security boundary — one layer of
+          defense in depth.</div>
+        <div class="limit"><b>Small n, one model family</b>Every number is stated
+          with its sample size, and the whole benchmark needs replication at scale
+          and across model families.</div>
       </div>
     </section>
   </div>
