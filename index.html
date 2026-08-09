@@ -200,6 +200,20 @@
   .limit b { display: block; color: var(--ink); font-size: 14.5px; margin-bottom: 6px; }
 
   /* ───────── footer ───────── */
+  /* ───────── what this is / where this goes ───────── */
+  .whatis { margin-top: 22px; font-size: 14.5px; color: var(--ink3); max-width: 610px; }
+  .paths { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px; margin-top: 32px; }
+  .path { background: var(--panel); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 26px; }
+  .path h3 { font-size: 16px; margin-bottom: 8px; letter-spacing: -0.01em; }
+  .path p { font-size: 14px; color: var(--ink2); margin-bottom: 14px; }
+  .path a { font-size: 14px; font-weight: 650; }
+  .path code { background: var(--panel2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 1px 6px; font-size: 12.5px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  #next .sub + .sub { margin-top: 14px; }
+
   footer { padding: 56px 0 48px; }
   footer .rule { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
   footer .rule em { color: var(--teal); font-style: normal; }
@@ -219,6 +233,7 @@
       <a href="#how">How it works</a>
       <a href="#evidence">Evidence</a>
       <a href="#limits">Limits</a>
+      <a href="#next">Get involved</a>
       <a href="https://github.com/probelight/probelight">GitHub</a>
     </div>
   </nav>
@@ -235,6 +250,8 @@
     <a class="btn primary" href="https://github.com/probelight/probelight">View on GitHub</a>
     <a class="btn ghost" href="https://github.com/probelight/probelight/blob/main/REPORT.md">Read the report</a>
   </div>
+  <p class="whatis">An independent open-source research project — Apache-2.0, reproducible
+  end to end on a laptop, with every failure mode published beside every result.</p>
 
   <div class="replay" aria-label="Replay of a recorded ProbeLight session">
     <div class="bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i>
@@ -533,6 +550,38 @@
 </div>
 
 <div class="wrap">
+  <section id="next">
+    <div class="kicker">Where this goes</div>
+    <h2>Monitoring that reads the model, not the transcript</h2>
+    <p class="sub">Almost every production monitor today works by reading what a model
+    <i>said</i> — usually by paying a second model to judge it. That works while the
+    deception is visible in the words. It stops working, and can reverse, the moment the
+    model conceals rather than asserts. Concealment is also the failure mode regulators
+    actually write rules about: non-disclosure, failure to warn, mis-selling.</p>
+    <p class="sub">The bet behind ProbeLight is that this needs to be read from the
+    inside, cheaply enough to run on every response, with an error profile you can put in
+    front of an auditor. The open evidence for that bet is on this page and in the repo.</p>
+
+    <div class="paths">
+      <div class="path">
+        <h3>If you research this</h3>
+        <p>The benchmark, probes and every eval file are in the repo, and
+        <code>reproduce.sh</code> runs the whole pipeline from a clean clone. We would
+        particularly like people to attack the omission benchmark — its label is
+        keyword-defined, which hands lexical methods an advantage we had to work around.</p>
+        <a href="https://github.com/probelight/probelight">Clone it →</a>
+      </div>
+      <div class="path">
+        <h3>If you run models in production</h3>
+        <p>If you operate a self-hosted open-weight model that advises or acts —
+        somewhere non-disclosure would matter — we would like to calibrate a probe on
+        your own traffic and tell you honestly what its false-positive profile looks
+        like. No charge; we want the evidence and you get the numbers.</p>
+        <a href="mailto:hello@probelight.ai?subject=ProbeLight%20%E2%80%94%20calibration%20on%20our%20model">hello@probelight.ai →</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="rule">The probe is a thermometer.<br><em>Never make it a thermostat.</em></div>
     <div class="meta">
