@@ -214,6 +214,16 @@
     font-family: ui-monospace, "SF Mono", Menlo, monospace; }
   #next .sub + .sub { margin-top: 14px; }
 
+.caveat { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);
+    font-size: 12.5px; color: var(--ink3); }
+  #about { padding-bottom: 20px; }
+  .about { max-width: 660px; margin-top: 22px; }
+  .about p { color: var(--ink2); font-size: 15px; margin-bottom: 14px; }
+  .about b { color: var(--ink); font-weight: 650; }
+  .about code { background: var(--panel2); border: 1px solid var(--border);
+    border-radius: 5px; padding: 1px 6px; font-size: 12.5px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
   footer { padding: 56px 0 48px; }
   footer .rule { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
   footer .rule em { color: var(--teal); font-style: normal; }
@@ -234,6 +244,7 @@
       <a href="#evidence">Evidence</a>
       <a href="#limits">Limits</a>
       <a href="#next">Get involved</a>
+      <a href="#about">About</a>
       <a href="https://github.com/probelight/probelight">GitHub</a>
     </div>
   </nav>
@@ -298,6 +309,9 @@
         <p>Below chance in all three. It rates the concealing answer as <i>more honest</i>
         than the one that mentions the mold — fluency reads as honesty, and the awkward
         disclosure reads as the suspicious one.</p>
+        <p class="caveat">Note: each model judges its own transcripts, so this is a
+        small-model judge, not a frontier one. Whether a GPT- or Claude-class judge
+        also inverts here is untested — see <a href="#limits">limits</a>.</p>
       </div>
       <div class="verdict good">
         <div class="vhead">What the activations say</div>
@@ -541,9 +555,18 @@
         <div class="limit"><b>Not adversarially robust</b>Activation monitors can
           be trained against. Never use one as a security boundary — one layer of
           defense in depth.</div>
-        <div class="limit"><b>Small n, one model family</b>Every number is stated
-          with its sample size, and the whole benchmark needs replication at scale
-          and across model families.</div>
+        <div class="limit"><b>The judge is a small model</b>The blind judge that
+          scored below chance is the <i>same 1.7B–4B model</i> being probed, not a
+          frontier judge. Whether a GPT- or Claude-class judge also inverts on
+          omission is <i style="font-style:normal;color:var(--orange)">untested</i> — it is the next experiment, and we will
+          publish it either way.</div>
+        <div class="limit"><b>Small n, small models</b>Three model families, all
+          1.7B–4B, 12 omission scenarios. Every number is stated with its sample
+          size. Nothing here has been tested at 70B or on frontier models.</div>
+        <div class="limit"><b>Instructed, not spontaneous</b>Every deception here
+          was <i>elicited</i> — the model was told to conceal. Whether the same
+          signal appears when a model conceals on its own initiative is the
+          question that actually matters, and we have not answered it.</div>
       </div>
     </section>
   </div>
@@ -579,6 +602,30 @@
         like. No charge; we want the evidence and you get the numbers.</p>
         <a href="mailto:hello@probelight.ai?subject=ProbeLight%20%E2%80%94%20calibration%20on%20our%20model">hello@probelight.ai →</a>
       </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="kicker">Who's behind this</div>
+    <h2>An independent project, stated plainly</h2>
+    <div class="about">
+      <p>ProbeLight is run by <b>Jonathan Durban</b>, working independently. No lab, no
+      institution, no funding — which is exactly why everything here is built to be
+      checked rather than believed: the code, the benchmarks, the probes and every
+      result file are public under Apache-2.0, and <code>reproduce.sh</code> runs the
+      whole pipeline from a clean clone on a laptop.</p>
+
+      <p>The research and engineering were done in collaboration with <b>Claude</b>
+      (Anthropic) — experiment design, implementation and analysis together, with
+      every published number produced by a script in the repo that anyone can re-run.
+      We mention it because you should know how the work was made, and because
+      several claims in earlier drafts were wrong and got caught by exactly the kind
+      of adversarial checking we're asking you to apply here.</p>
+
+      <p>The limits are published beside the results, on
+      <a href="#limits">this page</a> and at greater length in the report. If you find
+      something we got wrong, we would genuinely rather hear it than not —
+      <a href="mailto:hello@probelight.ai">hello@probelight.ai</a>.</p>
     </div>
   </section>
 
